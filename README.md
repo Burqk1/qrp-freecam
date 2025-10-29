@@ -16,7 +16,7 @@ FiveM için gelişmiş freecam scripti. Modern UI ve Vue.js ile geliştirilmişt
 
 1. Repoyu klonlayın:
    ```bash
-   git clone https://github.com/Burqk1/enhanced-freecam.git
+   git clone https://github.com/Burqk1/qrp-freecam.git
    ```
 
 2. Web klasörüne gidin ve bağımlılıkları yükleyin:
