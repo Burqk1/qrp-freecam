@@ -51,7 +51,7 @@
                 </defs>
             </svg>
 
-            <div class="relative px-5 sm:px-7 md:px-9 py-5 sm:py-6 flex flex-col justify-evenly gap-2.5 sm:gap-3.5 min-h-[250px]">
+            <div class="relative px-5 sm:px-7 md:px-9 pt-4 sm:pt-5 pb-7 sm:pb-8 flex flex-col justify-center gap-2.5 sm:gap-3.5 min-h-[250px]">
                 <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-2 sm:gap-3">
                     <div class="flex items-center gap-1.5 sm:gap-2">
                         <div class="w-5 h-5 flex items-center justify-center bg-white/5 rounded p-0.5">
