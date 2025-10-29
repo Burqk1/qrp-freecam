@@ -1,0 +1,22 @@
+{
+  "name": "enhanced-freecam",
+  "version": "1.0.0",
+  "description": "Basit ve hafif freecam scripti. FiveM native UI ile kontroller gösterilir.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
+    "vite": "^7.1.12"
+  },
+  "dependencies": {
+    "vue": "^3.5.22"
+  }
+}
