@@ -1,32 +1,32 @@
 # qrp-freecam (Enhanced Freecam)
 
-QBCore sunucular için FiveM freecam scripti. Oyuncu, karakterinin çevresinde (varsayılan 10 metre) serbest kamerayla gezebilir, açıyı ve FOV'u ayarlayabilir, ekran görüntüsü almak için arayüzü gizleyebilir. Kontrol ipuçları Vue 3 ile yazılmış küçük bir NUI arayüzünde gösterilir.
+A FiveM freecam script for QBCore servers. The player can move a free camera around their character (10 meters by default), adjust the angle and FOV, and hide the UI to take screenshots. Control hints are shown in a small NUI interface written in Vue 3.
 
-Sürüm: `1.0.0` (`fxmanifest.lua`).
+Version: `1.0.0` (`fxmanifest.lua`).
 
-## Nasıl çalışır
+## How it works
 
-- Freecam açılınca kamera karakterin 3 metre arkasına ve 2 metre yukarısına yerleşir.
-- Freecam açıkken karakter dondurulur, çarpışması kapatılır ve ölümsüz yapılır. Kapanınca bunlar geri alınır.
-- Kamera, açıldığı noktadan `distanceLimit` (varsayılan 10.0) metreden fazla uzaklaşırsa freecam kendiliğinden kapanır ve "Mesafe sınırını aştınız, freecam kapatıldı." bildirimi çıkar.
-- Freecam açıkken neredeyse tüm oyun kontrolleri kapatılır. Fare, `T` (sohbet) ve `N` açık kalır.
-- Bildirimler `QBCore.Functions.Notify` ile gönderilir.
+- When freecam opens, the camera is placed 3 meters behind and 2 meters above the character.
+- While freecam is active, the character is frozen, its collision is disabled and it is made invincible. These are reverted when freecam closes.
+- If the camera moves more than `distanceLimit` (default 10.0) meters from the point where it was opened, freecam closes on its own and shows the notification "Mesafe sınırını aştınız, freecam kapatıldı." ("You exceeded the distance limit, freecam closed.").
+- While freecam is active, almost all game controls are disabled. The mouse, `T` (chat) and `N` stay enabled.
+- Notifications are sent with `QBCore.Functions.Notify`.
 
-## Gereksinimler
+## Requirements
 
-- `qb-core` (script başlarken `exports['qb-core']:GetCoreObject()` çağırır)
-- Arayüzü derlemek için Node.js ve npm
-- Tailwind CSS, `web/index.html` içinden `https://cdn.tailwindcss.com` adresinden yüklenir. Bu yüzden arayüzün düzgün görünmesi için oyuncunun bu adrese erişebilmesi gerekir.
+- `qb-core` (the script calls `exports['qb-core']:GetCoreObject()` on startup)
+- Node.js and npm to build the UI
+- Tailwind CSS is loaded from `https://cdn.tailwindcss.com` in `web/index.html`. For the UI to render correctly, the player needs to be able to reach that address.
 
-## Kurulum
+## Installation
 
-1. Repoyu sunucunuzun `resources` klasörüne klonlayın:
+1. Clone the repo into your server's `resources` folder:
 
    ```bash
    git clone https://github.com/Burqk1/qrp-freecam.git
    ```
 
-2. Arayüzü derleyin. `web/dist/` git'e dahil değil, derlemeden arayüz yüklenmez:
+2. Build the UI. `web/dist/` is not included in git, and the UI won't load without a build:
 
    ```bash
    cd qrp-freecam/web
@@ -34,44 +34,44 @@ Sürüm: `1.0.0` (`fxmanifest.lua`).
    npm run build
    ```
 
-   Çıktı `web/dist/` klasörüne yazılır; `fxmanifest.lua` arayüzü `web/dist/index.html` üzerinden yükler.
+   The output is written to `web/dist/`; `fxmanifest.lua` loads the UI from `web/dist/index.html`.
 
-3. `server.cfg` dosyasına `qb-core`'dan sonra ekleyin:
+3. Add it to `server.cfg` after `qb-core`:
 
    ```cfg
    ensure qb-core
    ensure qrp-freecam
    ```
 
-## Kontroller
+## Controls
 
-| Tuş | İşlev |
+| Key | Action |
 |-----|-------|
-| `F6` | Freecam'i aç/kapat (`/freecam` komutu, tuş FiveM ayarlarından değiştirilebilir) |
-| Fare | Kamerayı döndür (yukarı/aşağı ±89° ile sınırlı) |
-| `W` / `S` | İleri / geri |
-| `A` / `D` | Sola / sağa |
-| `R` / `F` | Yukarı / aşağı |
-| `E` / `Q` | Kamerayı yana yatır (roll) |
-| `SHIFT` (basılı) | Hızlı hareket |
-| `SPACE` | Hız çarpanını 0.5 artırır (1.0'dan 5.0'a kadar, sonra 1.0'a döner) |
-| Fare tekerleği | Yakınlaştır / uzaklaştır (FOV 5–90 arası) |
-| `H` | Küçük menü ile tam kontrol menüsü arasında geçiş |
-| `Z` | Arayüzü gizle/göster (fotoğraf çekmek için) |
+| `F6` | Toggle freecam (`/freecam` command; the key can be changed in FiveM settings) |
+| Mouse | Rotate the camera (up/down limited to ±89°) |
+| `W` / `S` | Forward / backward |
+| `A` / `D` | Left / right |
+| `R` / `F` | Up / down |
+| `E` / `Q` | Tilt the camera sideways (roll) |
+| `SHIFT` (hold) | Fast movement |
+| `SPACE` | Increases the speed multiplier by 0.5 (from 1.0 up to 5.0, then wraps back to 1.0) |
+| Mouse wheel | Zoom in / out (FOV between 5 and 90) |
+| `H` | Switch between the small menu and the full controls menu |
+| `Z` | Hide/show the UI (for taking photos) |
 
-Tam kontrol menüsündeki tuşlar `client.lua` içindeki tuş atamalarıyla aynıdır.
+The keys in the full controls menu match the key bindings in `client.lua`.
 
-### Komut
+### Command
 
-| Komut | Açıklama |
+| Command | Description |
 |-------|----------|
-| `/freecam` | Freecam'i açar veya kapatır. Varsayılan tuşu `F6` (`RegisterKeyMapping`). |
+| `/freecam` | Opens or closes freecam. Default key is `F6` (`RegisterKeyMapping`). |
 
-Komut için herhangi bir yetki kontrolü yoktur; sunucudaki her oyuncu kullanabilir.
+There is no permission check on the command; every player on the server can use it.
 
-## Yapılandırma
+## Configuration
 
-Ayrı bir config dosyası yok. Ayarlar `client.lua` dosyasının başındaki değişkenlerdir:
+There is no separate config file. The settings are the variables at the top of `client.lua`:
 
 ```lua
 local normalSpeed = 0.05         -- Normal hareket hızı
@@ -88,19 +88,19 @@ local transitionSpeed = 150      -- Freecam'e geçiş süresi (ms)
 local rotationSensitivity = 1.0  -- Dönüş ve roll hassasiyeti çarpanı
 ```
 
-Bildirim metinleri (`Freecam kapatıldı.` vb.) `ForceCloseFreecam` fonksiyonunun içindedir.
+The notification texts (`Freecam kapatıldı.` ("Freecam closed."), etc.) are inside the `ForceCloseFreecam` function.
 
-## Arayüz
+## UI
 
-- **Küçük menü:** Ekranın sağ ortasında yalnızca `H - YARDIM` yazar.
-- **Tam menü:** Alt ortada yönlendirme (`W`/`A`/`S`/`D`), döndürme (`E`/`Q`), yükseklik (`R`/`F`), hız (`SHIFT`, `SPACE`), yakınlaştırma (tekerlek) ve menüyü gizleme (`Z`) tuşlarını listeler.
-- Arayüz metinleri Türkçedir.
+- **Small menu:** Shows only `H - YARDIM` ("H - HELP") on the middle right of the screen.
+- **Full menu:** At the bottom center, lists the keys for movement (`W`/`A`/`S`/`D`), rotation (`E`/`Q`), height (`R`/`F`), speed (`SHIFT`, `SPACE`), zoom (wheel) and hiding the menu (`Z`).
+- The UI text is in Turkish.
 
-Lua tarafından arayüze giden mesajlar: `showUI` (`show: true/false`) ve `toggleMenu`. Arayüzden Lua'ya tek NUI callback'i vardır: `closeUI`.
+Messages sent from Lua to the UI: `showUI` (`show: true/false`) and `toggleMenu`. There is a single NUI callback from the UI to Lua: `closeUI`.
 
-## Geliştirme
+## Development
 
-`web/package.json` içindeki scriptler:
+Scripts in `web/package.json`:
 
 ```bash
 cd web
@@ -109,9 +109,9 @@ npm run build     # web/dist/ klasörüne derleme
 npm run preview   # Derlenmiş çıktıyı önizleme
 ```
 
-Derlemenin giriş noktası `web/index.html` → `web/src/main.js` → `web/src/App.vue` zinciridir.
+The build entry point chain is `web/index.html` → `web/src/main.js` → `web/src/App.vue`.
 
-## Klasör yapısı
+## Folder structure
 
 ```
 qrp-freecam/
@@ -126,6 +126,6 @@ qrp-freecam/
     └── package.json
 ```
 
-## Lisans
+## License
 
-Repoda ayrı bir LICENSE dosyası yok. `web/package.json` içinde `"license": "ISC"` yazıyor.
+There is no separate LICENSE file in the repo. `web/package.json` says `"license": "ISC"`.
