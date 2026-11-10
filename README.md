@@ -59,7 +59,7 @@ Sürüm: `1.0.0` (`fxmanifest.lua`).
 | `H` | Küçük menü ile tam kontrol menüsü arasında geçiş |
 | `Z` | Arayüzü gizle/göster (fotoğraf çekmek için) |
 
-Not: Tam kontrol menüsü döndürme satırında `E`, `Q`, `SPACE` tuşlarını gösterir ve `R`/`F` yükseklik kontrolünden bahsetmez. Yukarıdaki tablo `client.lua` içindeki gerçek tuş atamalarına göre hazırlanmıştır.
+Tam kontrol menüsündeki tuşlar `client.lua` içindeki tuş atamalarıyla aynıdır.
 
 ### Komut
 
@@ -93,7 +93,7 @@ Bildirim metinleri (`Freecam kapatıldı.` vb.) `ForceCloseFreecam` fonksiyonunu
 ## Arayüz
 
 - **Küçük menü:** Ekranın sağ ortasında yalnızca `H - YARDIM` yazar.
-- **Tam menü:** Alt ortada yönlendirme, döndürme, hız, yakınlaştırma ve menüyü gizleme tuşlarını listeler.
+- **Tam menü:** Alt ortada yönlendirme (`W`/`A`/`S`/`D`), döndürme (`E`/`Q`), yükseklik (`R`/`F`), hız (`SHIFT`, `SPACE`), yakınlaştırma (tekerlek) ve menüyü gizleme (`Z`) tuşlarını listeler.
 - Arayüz metinleri Türkçedir.
 
 Lua tarafından arayüze giden mesajlar: `showUI` (`show: true/false`) ve `toggleMenu`. Arayüzden Lua'ya tek NUI callback'i vardır: `closeUI`.
@@ -109,7 +109,7 @@ npm run build     # web/dist/ klasörüne derleme
 npm run preview   # Derlenmiş çıktıyı önizleme
 ```
 
-Derlemenin giriş noktası `web/index.html` → `web/src/main.js` → `web/src/App.vue` zinciridir. `web/app.js` ve `web/style.css` eski bir sürümden kalma dosyalar gibi görünüyor; derlemeye dahil edilmiyorlar.
+Derlemenin giriş noktası `web/index.html` → `web/src/main.js` → `web/src/App.vue` zinciridir.
 
 ## Klasör yapısı
 
@@ -122,8 +122,6 @@ qrp-freecam/
     ├── src/
     │   ├── main.js     # Vue uygulamasını başlatır
     │   └── App.vue     # Menü bileşeni
-    ├── app.js          # Kullanılmıyor
-    ├── style.css       # Kullanılmıyor
     ├── vite.config.js  # Çıktı: web/dist/
     └── package.json
 ```

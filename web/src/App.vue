@@ -84,7 +84,22 @@
                     <div class="flex items-center justify-end gap-1 flex-wrap">
                         <kbd class="px-1.5 py-0.5 bg-[#ccc] text-[#212529] font-bold rounded border-b-[2px] border-[#777] text-[10px]">E</kbd>
                         <kbd class="px-1.5 py-0.5 bg-[#ccc] text-[#212529] font-bold rounded border-b-[2px] border-[#777] text-[10px]">Q</kbd>
-                        <kbd class="px-1.5 py-0.5 bg-[#ccc] text-[#212529] font-bold rounded border-b-[2px] border-[#777] text-[10px]">SPACE</kbd>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-2 sm:gap-3">
+                    <div class="flex items-center gap-1.5 sm:gap-2">
+                        <div class="w-5 h-5 flex items-center justify-center bg-white/5 rounded p-0.5">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5))">
+                                <path d="M12 3V21M12 3L7 8M12 3L17 8M12 21L7 16M12 21L17 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="text-[10px] sm:text-xs md:text-sm font-bold text-white tracking-wide" style="text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8)">YÜKSEKLİK</div>
+                    </div>
+                    <div class="text-lg sm:text-xl text-white/30 font-thin mx-1">|</div>
+                    <div class="flex items-center justify-end gap-1">
+                        <kbd class="px-1.5 py-0.5 bg-[#ccc] text-[#212529] font-bold rounded border-b-[2px] border-[#777] text-[10px]">R</kbd>
+                        <kbd class="px-1.5 py-0.5 bg-[#ccc] text-[#212529] font-bold rounded border-b-[2px] border-[#777] text-[10px]">F</kbd>
                     </div>
                 </div>
 
@@ -100,6 +115,7 @@
                     <div class="text-lg sm:text-xl text-white/30 font-thin mx-1">|</div>
                     <div class="flex items-center justify-end gap-1">
                         <kbd class="px-2 py-0.5 bg-[#ccc] text-[#212529] font-bold rounded border-b-[2px] border-[#777] text-[10px]">SHIFT</kbd>
+                        <kbd class="px-2 py-0.5 bg-[#ccc] text-[#212529] font-bold rounded border-b-[2px] border-[#777] text-[10px]">SPACE</kbd>
                     </div>
                 </div>
 
